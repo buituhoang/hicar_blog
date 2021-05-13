@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="blog_youtube_channel_kanban" model="ir.ui.view">
+        <field name="name">blog.youtube.channel.kanban</field>
+        <field name="model">blog.youtube.channel</field>
+        <field name="arch" type="xml">
+            <kanban class="o_hr_employee_kanban">
+                <field name="id"/>
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                            <div class="oe_kanban_details">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong>
+                                            <field name="name"/>
+                                        </strong>
+                                        <div class="col-5 o_kanban_primary_left">
+                                        <button class="btn btn-primary" name="crawl_videos" type="object">Crawl
+                                            Videos</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="blog_youtube_channel_tree" model="ir.ui.view">
+        <field name="name">blog.youtube.channel.tree</field>
+        <field name="model">blog.youtube.channel</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="channel_link"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="blog_youtube_channel_form" model="ir.ui.view">
+        <field name="name">blog.youtube.channel.form</field>
+        <field name="model">blog.youtube.channel</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="crawl_videos" type="object"
+                            string="Crawl Video" class="btn btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="channel_link"/>
+                        </group>
+                        <field name="videos">
+                            <tree>
+                                <field name="name"/>
+                                <field name="description"/>
+                                <field name="hot"/>
+                            </tree>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="blog_youtube_channel_action" model="ir.actions.act_window">
+        <field name="name">Blog Youtube Channel</field>
+        <field name="res_model">blog.youtube.channel</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new youtube channel.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="blog_root"
+              name="Hicar Blog"
+              web_icon="hicar_blog,static/description/icon.png"/>
+
+    <menuitem id="blog_youtube_channel_root"
+              name="Youtube Channel"
+              parent="blog_root"
+              sequence="1"/>
+
+    <menuitem id="blog_youtube_channel"
+              name="Youtube Channel"
+              action="blog_youtube_channel_action"
+              parent="blog_youtube_channel_root"
+              sequence="1"/>
+</odoo>

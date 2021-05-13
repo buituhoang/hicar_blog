@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_blog_youtube,access.blog.youtube,model_blog_youtube,,1,1,1,1
+access_blog_youtube_channel,access.blog.youtube.channel,model_blog_youtube_channel,,1,1,1,1
+access_blog_news,access.blog.news,model_blog_news,,1,1,1,1
